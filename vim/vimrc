@@ -1,0 +1,143 @@
+" .vimrc -- vim configuration file
+"
+" Tommy Nguyen 
+" September 7, 2013
+
+" Set tab to two spaces if not a makefile
+let _curfile = expand("%:t")
+if _curfile =~ "Makefile" || _curfile =~ "makefile" || _curfile =~ ".*\.mk"
+  set noexpandtab
+else
+  set expandtab
+  set tabstop=2
+  set shiftwidth=2
+endif
+
+" Set tab behavior for python
+autocmd FileType python setlocal expandtab shiftwidth=4 softtabstop=4
+
+" Read a skeleton template for files
+" autocmd BufNewFile  *.c	0r ~/vim/sample.c
+" autocmd BufNewFile  *.h	0r ~/vim/sample.h
+
+" Automatic group for markdown
+augroup markdown
+    au!
+    au BufNewFile,BufRead *.md,*.markdown setlocal filetype=markdown
+augroup END
+
+" Make vim more useful
+set nocompatible
+
+" Use system clipboard
+set clipboard=unnamedplus
+
+" Turn on C indent
+set cindent
+
+" Turn on filetype plugins
+filetype indent on
+filetype plugin on
+
+" Configure backspace so it acts as it should act
+set backspace=eol,start,indent
+
+" change movement to the new line
+" set whichwrap+=<,>,h,l
+
+" Add the g flag to search/replace by default
+set gdefault
+
+" For regular expressions turn magic on
+set magic
+
+" Enable spellcheck
+set spell spelllang=en_us
+
+" Search like modern browsers
+set incsearch
+
+" Enable line number
+set number
+
+" Highlight current line
+set cursorline
+
+" Highlight search results
+set hlsearch
+
+" Always enable status line
+" set laststatus=2
+
+" Show matching brackets
+set showmatch
+
+" Blink when match is found
+set mat=2
+
+" Preserve position of line
+set nostartofline
+
+" Show the cursor position
+set ruler
+
+" Show the filename in the window
+set title
+
+" Set scrolling before the bottom of page
+set scrolloff=4
+
+" Wrap search
+set wrapscan
+
+" Disable backup
+set nobackup
+set nowritebackup
+set noswapfile
+
+" Set window slit options
+set splitright
+set splitbelow
+
+" Enable mouse input
+set mouse=a
+
+" Set background to dark
+" Set colorscheme to solarized
+set background=dark
+syntax enable
+colorscheme solarized
+set t_Co=16
+
+" Enable wildmenu
+set wildmenu
+
+" Map Esc and save
+imap qw <Esc>:w<CR>
+imap <leader>w <Esc>:w<CR>
+imap <leader><leader> <Esc>:w<CR>
+
+" Map quit
+map <leader>q <Esc>:q<CR>
+
+" Turn off search highlight
+map <leader>c <Esc>:let @/=""<CR>
+
+map <F8> <C-w>w
+map <F7> <C-w>W
+map <S-Enter> O<Esc>
+map <CR> o<Esc>
+set textwidth=80
+nnoremap <F2> :set invpaste paste?<CR>
+
+" Toggle paste mode
+set pastetoggle=<F2>
+
+" Show the current mode
+set showmode
+
+"source /usr/lib/python2.7/site-packages/powerline/ext/vim/source_plugin.vim
+
+"used for youcompleteme
+let g:ycm_global_ycm_extra_conf = '~/.ycm_global_ycm_extra_conf.py'
+
